@@ -1,8 +1,5 @@
 # CSV Asteroid Mining Processor
 
-
-# Asteroid Mining Data Processor
-
 Create a Python program in `main.py` that processes data collected from asteroid mining scans. Each row of the provided CSV file contains the amount of three different resources found on an asteroid. Your program will read the existing data, calculate new numerical values for every asteroid, and write the processed results to a **new CSV file**.
 
 Each resource has a different cargo value:
