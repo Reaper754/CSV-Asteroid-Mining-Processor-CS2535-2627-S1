@@ -6,26 +6,21 @@ crystal_points = 5
 
 with open("input_asteroid_data.csv", "r") as file:
     reader = csv.reader(file)
+    data = list(reader)
 
-    for row in reader:
-        #ore_score = 0
-        #gas_score = 0
-        #crystal_score = 0
-        #total_units = 0
-        #cargo_value = 0
+
+with open("output_asteroid_data.csv", "w", newline="") as file:
+    headers = ["astroid_id", "ore_units", "crystal_units", "gas_units", "total_units", "cargo_value"]
+    writer = csv.writer(file)
+    writer.writerow(headers)
+    for row in data:
         try:
-            rock_id = row[0]
             total_units = int(row[1]) + int(row[3]) + int(row[2])
             ore_score = int(row[1]) * ore_points
             gas_score = int(row[3]) * gas_points
             crystal_score = int(row[2]) * crystal_points
             cargo_value = ore_score + gas_score + crystal_score
-            with open("output_asteroid_data.csv", "w", newline="") as file2:
-                headers = ["astroid_id", "ore_units", "crystal_units", "gas_units", "total_units", "cargo_value"]
-                writer = csv.writer(file2)
-
-                writer.writerow(headers)
-                writer.writerow([row[0], row[1], row[2], row[3], total_units, cargo_value])
-
+            writer.writerow([row[0], row[1], row[2], row[3], total_units, cargo_value])
         except ValueError:
             pass
+
